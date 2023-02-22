@@ -46,7 +46,7 @@ val extensionVersion = EdgeBridge.extensionVersion()
 
 ### getLocationHint
 
-Gets the Edge Network location hint used in requests to the Edge Network. The Edge Network location hint may be used when building the URL for Edge Network requests to hint at the server cluster to use.
+Gets the Edge Network location hint used in requests to Edge Network. The Edge Network location hint may be used when building the URL for Edge Network requests to hint at the server cluster to use.
 
 #### Java
 
@@ -133,7 +133,7 @@ See [MobileCore.resetIdentities](https://github.com/adobe/aepsdk-core-android/bl
 
 ### sendEvent
 
-Sends an Experience event to the Adobe Experience Platform Edge Network.
+Sends an Experience event to Edge Network.
 
 #### Java
 
@@ -142,8 +142,8 @@ Sends an Experience event to the Adobe Experience Platform Edge Network.
 public static void sendEvent(final ExperienceEvent experienceEvent, final EdgeCallback callback);
 ```
 
-* `experienceEvent` is the XDM [Experience Event](#experienceevent) sent to the Edge Network.
-* `callback` is an optional callback invoked when the request is complete and returns the associated [EdgeEventHandle](#edgeeventhandle)(s) received from the Edge Network. It may be invoked on a different thread.
+* `experienceEvent` is the XDM [Experience Event](#experienceevent) sent to Edge Network.
+* `callback` is an optional callback invoked when the request is complete and returns the associated [EdgeEventHandle](#edgeeventhandle)(s) received from Edge Network. It may be invoked on a different thread.
 
 ##### Example
 ```java
@@ -197,7 +197,7 @@ Edge.sendEvent(experienceEvent) {
 
 ### setLocationHint
 
-Sets the Edge Network location hint used in requests to the Edge Network. Passing `null` or an empty string clears the existing location hint. Edge Network responses may overwrite the location hint to a new value when necessary to manage network traffic.
+Sets the Edge Network location hint used in requests to Edge Network. Passing `null` or an empty string (`""`) clears the existing location hint. Edge Network responses may overwrite the location hint to a new value when necessary to manage network traffic.
 
 > **Warning**  
 > Use caution when setting the location hint. Only use valid [location hints for the `EdgeNetwork` scope](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/location-hints.html). An invalid location hint value will cause all Edge Network requests to fail with a `404` response code.
@@ -208,7 +208,7 @@ Sets the Edge Network location hint used in requests to the Edge Network. Passin
 ```java
 public static void setLocationHint(final String hint)
 ```
-- `hint` the Edge Network location hint to use when connecting to the Edge Network.
+- `hint` the Edge Network location hint to use when connecting to Edge Network.
 
 ##### Example
 ```java
@@ -228,7 +228,7 @@ Edge.setLocationHint(hint)
 
 ### XDM Schema
 
-The Edge extension provides the `Schema` and `Property` interfaces that can be used to define the classes associated with your XDM schema in Adobe Experience Platform.
+The Edge Network extension provides the `Schema` and `Property` interfaces that can be used to define the classes associated with your XDM schema in Experience Platform.
 
 #### Java
 ```java
@@ -284,7 +284,7 @@ When defining your custom XDM schema(s), implement these interfaces to ensure th
 
 ### EdgeEventHandle
 
-The `EdgeEventHandle` is a response fragment from Edge Network for a sent XDM Experience Event. One event can receive none, one or multiple `EdgeEventHandle`(s) as response.
+The `EdgeEventHandle` is a response fragment from Edge Network for a sent XDM Experience Event. One event can receive none, one, or multiple `EdgeEventHandle`(s) as response.
 Use this class when calling the [sendEvent](#sendevent) API with `EdgeCallback`.
 
 #### Java
@@ -308,7 +308,7 @@ public class EdgeEventHandle {
 
 ### ExperienceEvent
 
-Experience Event is the event to be sent to Adobe Experience Platform Edge Network. The XDM data is required for any Experience Event being sent using the Edge extension.
+Experience Event is the event to be sent to Edge Network. The XDM data is required for any Experience Event being sent using the Edge extension.
 
 #### Java
 ```java
@@ -380,7 +380,7 @@ public final class ExperienceEvent {
 #### Examples
 Example 1: Set both the XDM and freeform data of an `ExperienceEvent`.
 ```java
-// Set freeform data of the Experience Event instance
+// Set freeform data of the Experience Event
 Map<String, Object> xdmData = new HashMap<>();
 xdmData.put("eventType", "SampleXDMEvent");
 xdmData.put("sample", "data");
@@ -396,7 +396,7 @@ ExperienceEvent experienceEvent = new ExperienceEvent.Builder()
 ```
 Example 2: Create an `ExperienceEvent` event instance using a class that implements the `Schema` interface.
 ```java
-// Create Experience Event from XDM Schema implementations
+// Create an Experience Event from XDM Schema class implementations
 public class XDMSchemaExample implements com.adobe.marketing.mobile.xdm.Schema {
   private String eventType;
   private String otherField;
@@ -445,7 +445,7 @@ ExperienceEvent experienceEvent = new ExperienceEvent.Builder()
 #### Examples
 Example 1: Set both the XDM and freeform data of an `ExperienceEvent`.
 ```kotlin
-// Set freeform data of the Experience Event instance
+// Set the freeform data of the Experience Event
 val xdmData = mutableMapOf<String, Any>()
 xdmData["eventType"] = "SampleXDMEvent"
 xdmData["sample"] = "data"
