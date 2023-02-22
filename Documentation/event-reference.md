@@ -108,7 +108,7 @@ This event is a request to set the Edge Network location hint used by the Edge N
 #### Event data payload definition<!-- omit in toc -->
 
 | Key | Value type | Required | Description |
-| --- | ---------- | ------------- | ----------- |
+| --- | ---------- | -------- | ----------- |
 | locationHint | `String` | Yes | Location hint value. Passing `null` or an empty string (`""`) clears the existing location hint. See the [list of valid location hints for the `EdgeNetwork` scope](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/location-hints.html). |
 
 -----
