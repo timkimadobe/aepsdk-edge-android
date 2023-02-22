@@ -125,7 +125,7 @@ Edge.registerExtension()
 
 ### resetIdentities
 
-Resets current state of the Edge extension and clears previously cached content related to current identity, if any.
+Resets current state of the Edge Network extension and clears previously cached content related to current identity, if any.
 
 See [MobileCore.resetIdentities](https://github.com/adobe/aepsdk-core-android/blob/main/Documentation/MobileCore/api-reference.md) for more details.
 
@@ -147,7 +147,7 @@ public static void sendEvent(final ExperienceEvent experienceEvent, final EdgeCa
 
 ##### Example
 ```java
-// Create experience event from Map
+// Create Experience event from map
 Map<String, Object> xdmData = new HashMap<>();
 xdmData.put("eventType", "SampleXDMEvent");
 xdmData.put("sample", "data");
@@ -157,11 +157,11 @@ ExperienceEvent experienceEvent = new ExperienceEvent.Builder()
   .build();
 ```
 ```java
-// Example 1 - send the experience event without handling the Edge Network response
+// Example 1 - send the Experience event without handling the Edge Network response
 Edge.sendEvent(experienceEvent, null);
 ```
 ```java
-// Example 2 - send the experience event and handle the Edge Network response onComplete
+// Example 2 - send the Experience event and handle the Edge Network response onComplete
 Edge.sendEvent(experienceEvent, new EdgeCallback() {
   @Override
   public void onComplete(final List<EdgeEventHandle> handles) {
@@ -173,7 +173,7 @@ Edge.sendEvent(experienceEvent, new EdgeCallback() {
 
 #### Example
 ```kotlin
-// Create experience event from Map
+// Create Experience event from Map
 val xdmData = mutableMapOf<String, Any>()
 xdmData["eventType"] = "SampleXDMEvent"
 xdmData["sample"] = "data"
@@ -183,11 +183,11 @@ val experienceEvent = ExperienceEvent.Builder()
   .build()
 ```
 ```kotlin
-// Example 1 - send the experience event without handling the Edge Network response
+// Example 1 - send the Experience event without handling the Edge Network response
 Edge.sendEvent(experienceEvent, null)
 ```
 ```kotlin
-// Example 2 - send the experience event and handle the Edge Network response onComplete
+// Example 2 - send the Experience event and handle the Edge Network response onComplete
 Edge.sendEvent(experienceEvent) {
   // Handle the Edge Network response 
 }
@@ -278,7 +278,7 @@ public interface Property {
 }
 ```
 
-When defining your custom XDM schema(s), implement these interfaces to ensure that the Edge extension successfully serializes the provided data before sending it to Edge Network.
+When defining your custom XDM schema(s), implement these interfaces to ensure that the Edge Network extension successfully serializes the provided data before sending it to Edge Network.
 
 ------
 
@@ -308,7 +308,7 @@ public class EdgeEventHandle {
 
 ### ExperienceEvent
 
-Experience Event is the event to be sent to Edge Network. The XDM data is required for any Experience Event being sent using the Edge extension.
+Experience Event is the event to be sent to Edge Network. The XDM data is required for any Experience Event being sent using the Edge Network extension.
 
 #### Java
 ```java
