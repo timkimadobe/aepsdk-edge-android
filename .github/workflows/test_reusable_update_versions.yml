@@ -46,4 +46,4 @@ jobs:
       dependencies: AEPCore ${{ github.event.inputs.core-dependency }}, AEPEdgeIdentity ${{ github.event.inputs.edge-identity-dependency }}, AEPEdgeConsent ${{ github.event.inputs.edge-consent-dependency }}, AEPTestUtils ${{ github.event.inputs.testutils-dependency }}
       paths: code/edge/src/main/java/com/adobe/marketing/mobile/EdgeConstants.java, code/gradle.properties
       update: ${{ github.event.inputs.update-mode == 'true' }}
-      secrets: inherit
+      # secrets: inherit
