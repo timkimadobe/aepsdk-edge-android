@@ -1,0 +1,49 @@
+name: Update Versions
+
+on:
+  workflow_dispatch:
+    inputs:
+      update-mode:
+        description: 'If true, update the versions in the gradle.properties file. If false, validate the versions in the gradle.properties file.'
+        required: true
+        type: boolean
+
+      version:
+        description: 'New version to use for the extension. Example: 1.5.2'
+        required: true
+
+      branch:
+        description: 'The target branch where the version update will be applied and the pull request will be merged into.'
+        required: true
+
+      core-dependency:
+        description: 'If a version is provided, update/validate AEPCore dependency gradle.properties. Example: 1.2.3'
+        required: false
+
+      edge-identity-dependency:
+        description: 'If a version is provided, update/validate AEPEdgeIdentity dependency gradle.properties. Example: 1.2.3'
+        required: false
+
+      edge-consent-dependency:
+        description: 'If a version is provided, update/validate AEPEdgeConsent dependency gradle.properties. Example: 1.2.3'
+        required: false
+
+      testutils-dependency:
+        description: 'If a version is provided, update/validate AEPTestUtils dependency gradle.properties. Example: 1.2.3'
+        required: false
+
+#         mavenCoreVersion=3.0.0
+# mavenEdgeIdentityVersion=3.0.0
+# mavenEdgeConsentVersion=3.0.0
+# mavenTestUtilsVersion=3.0.0
+
+jobs:
+  update-versions:
+    uses: timkimadobe/aepsdk-commons/.github/workflows/versions.yml@version-script-update
+    with:
+      version: ${{ github.event.inputs.version }}
+      branch: ${{ github.event.inputs.branch }}
+      dependencies: AEPCore ${{ github.event.inputs.core-dependency }}, AEPEdgeIdentity ${{ github.event.inputs.edge-identity-dependency }}, AEPEdgeConsent ${{ github.event.inputs.edge-consent-dependency }}, AEPTestUtils ${{ github.event.inputs.testutils-dependency }}
+      paths: code/edge/src/main/java/com/adobe/marketing/mobile/EdgeConstants.java, code/gradle.properties
+      update: ${{ github.event.inputs.update-mode == 'true' }}
+      # secrets: inherit
