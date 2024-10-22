@@ -39,8 +39,7 @@ on:
 
 jobs:
   update-versions:
-    permissions:
-      contents: write
+    permissions: write-all
     uses: timkimadobe/aepsdk-commons/.github/workflows/versions.yml@version-script-update
     with:
       version: ${{ github.event.inputs.version }}
